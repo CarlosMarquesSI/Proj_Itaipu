@@ -1,31 +1,24 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateArracoadorTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('arracoador', function (Blueprint $table) {
-            $table->id();
-            $table->string('nome');
-            $table->float('temperatura');
-            $table->float('ph');
-            $table->float('qualidadeagua');
+            $table->id('id_arracoador');
+            $table->string('ip', 32);
+            $table->tinyInteger('qualidadeagua');
+            $table->tinyInteger('temperatura');
+            $table->tinyInteger('ph');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('arracoador');
     }
-};
+}
